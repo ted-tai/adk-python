@@ -529,14 +529,14 @@ class DatabaseSessionService(BaseSessionService):
           StorageSession, (session.app_name, session.user_id, session.id)
       )
 
-      if storage_session.update_time.timestamp() > session.last_update_time:
-        raise ValueError(
-            "The last_update_time provided in the session object"
-            f" {datetime.fromtimestamp(session.last_update_time):'%Y-%m-%d %H:%M:%S'} is"
-            " earlier than the update_time in the storage_session"
-            f" {storage_session.update_time:'%Y-%m-%d %H:%M:%S'}. Please check"
-            " if it is a stale session."
-        )
+      # if storage_session.update_time.timestamp() > session.last_update_time:
+      #   raise ValueError(
+      #       "The last_update_time provided in the session object"
+      #       f" {datetime.fromtimestamp(session.last_update_time):'%Y-%m-%d %H:%M:%S'} is"
+      #       " earlier than the update_time in the storage_session"
+      #       f" {storage_session.update_time:'%Y-%m-%d %H:%M:%S'}. Please check"
+      #       " if it is a stale session."
+      #   )
 
       # Fetch states from storage
       storage_app_state = session_factory.get(
